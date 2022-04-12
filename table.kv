@@ -1,0 +1,444 @@
+CryptoTable:
+
+<CryptoTable>:
+
+    orientation: 'vertical'
+    spacing: "5dp"
+    canvas.before:
+        Color:
+            rgba: .8, .8, .8, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    # NAV BAR -------------------------------------------------------
+
+    BoxLayout:
+        size_hint: 1, .5
+        canvas.before:
+            Color:
+                rgba: .15, .15, .15, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        Label:
+            text: "NavBar"
+    
+    # TABLE -------------------------------------------------------
+
+    BoxLayout:    
+        spacing: "5dp"
+
+        BoxLayout:
+            canvas.before:
+                Color:
+                    rgba: 0, 0, 0, 1
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            Label:
+                text: "TOKEN"
+                font_size: "20dp"
+
+        BoxLayout:
+            canvas.before:
+                Color:
+                    rgba: 0, 0, 0, 1
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            Label:
+                text: "Wallet"
+                font_size: "20dp"
+
+        BoxLayout:
+            canvas.before:
+                Color:
+                    rgba: 0, 0, 0, 1
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            Label:
+                text: "Amount"
+                font_size: "20dp"
+
+        BoxLayout:
+            canvas.before:
+                Color:
+                    rgba: 0, 0, 0, 1
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            Label:
+                text: "Current Value"
+                font_size: "20dp"
+        
+        BoxLayout:
+            canvas.before:
+                Color:
+                    rgba: 0, 0, 0, 1
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            Label:
+                text: "Wallet Value"
+                font_size: "20dp"
+
+    # FIRST ROW -------------------------------------------------------
+    BoxLayout:
+        spacing: "5dp"
+
+        BoxLayout:
+            canvas.before:
+                Color:
+                    rgba: 0, 0, 0, 1
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            Label:
+                text: "BTC"
+
+        BoxLayout:
+            canvas.before:
+                Color:
+                    rgba: 0, 0, 0, 1
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            Label:
+                text: "Binance"
+
+
+        BoxLayout:
+            orientation: 'vertical'
+            canvas.before:
+                Color:
+                    rgba: 0, 0, 0, 1
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+
+                
+            Label:
+                id: BTC_amount_value
+                text: str(root.tokens_records[root.selected_wallet]["BTC"])
+
+
+            TextInput:
+                id: BTC_txt_input
+                size_hint: 1, None
+                size: 0, "30dp"
+                font_size: "15dp"
+                multiline: False
+                on_text_validate: root.token_amount_validate(self, "BTC", root.alter_token_data, BTC_amount_value, root.BTC_current_value, BTC_wallet_value)
+
+
+        BoxLayout:
+            canvas.before:
+                Color:
+                    rgba: 0, 0, 0, 1
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            Label:
+                id: BTC_current_value
+                text: root.BTC_current_value
+
+        BoxLayout:
+            canvas.before:
+                Color:
+                    rgba: 0, 0, 0, 1
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            Label:
+                id: BTC_wallet_value
+                text: root.BTC_wallet_value_label
+
+    # SECOND ROW -------------------------------------------------------
+    BoxLayout:
+        spacing: "5dp"
+
+        BoxLayout:
+            canvas.before:
+                Color:
+                    rgba: 0, 0, 0, 1
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            Label:
+                text: "ETH"
+        
+        BoxLayout:
+            orientation: "vertical"
+            canvas.before:
+                Color:
+                    rgba: 0, 0, 0, 1
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+
+            ToggleButton:
+                id: ETH_toggle_button_binance
+                text: "Binance"
+                on_press: root.selected_wallet_toggle_button("Binance", "ETH", ETH_txt_input, ETH_amount_value, root.ETH_current_value, ETH_wallet_value, self, ETH_toggle_button_ronin, ETH_toggle_button_all_wallets)
+
+            ToggleButton:
+                id: ETH_toggle_button_ronin
+                text: "Ronin"
+                on_press: root.selected_wallet_toggle_button("Ronin", "ETH", ETH_txt_input, ETH_amount_value, root.ETH_current_value, ETH_wallet_value, self, ETH_toggle_button_binance, ETH_toggle_button_all_wallets)
+                
+                
+            ToggleButton:
+                id: ETH_toggle_button_all_wallets
+                text: "All Wallets"
+                state: "down"
+                on_press: root.all_wallet__toggle_button("ETH", ETH_txt_input, ETH_amount_value, root.ETH_current_value, ETH_wallet_value, self, ETH_toggle_button_binance, ETH_toggle_button_ronin)
+
+
+        BoxLayout:
+            orientation: 'vertical'
+            canvas.before:
+                Color:
+                    rgba: 0, 0, 0, 1
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+
+            Label:
+                id: ETH_amount_value
+                text: str(root.tokens_records[root.selected_wallet]["ETH"])
+
+            TextInput:
+                id: ETH_txt_input
+                size_hint: 1, None
+                size: 0, "5dp"
+                font_size: "15dp"
+                background_color: (0,0,0,1)
+                multiline: False
+                on_text_validate: root.token_amount_validate(self, "ETH", root.alter_token_data, ETH_amount_value, root.ETH_current_value, ETH_wallet_value)
+                disabled: True
+
+        BoxLayout:
+            canvas.before:
+                Color:
+                    rgba: 0, 0, 0, 1
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            Label:
+                id: ETH_current_value
+                text: root.ETH_current_value
+
+        BoxLayout:
+            canvas.before:
+                Color:
+                    rgba: 0, 0, 0, 1
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            Label:
+                id: ETH_wallet_value
+                text: root.ETH_wallet_value_label
+
+    # THIRD ROW -------------------------------------------------------
+    BoxLayout:
+        spacing: "5dp"
+
+        BoxLayout:
+            canvas.before:
+                Color:
+                    rgba: 0, 0, 0, 1
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            Label:
+                text: "SLP"
+        
+        BoxLayout:
+            orientation: "vertical"
+            canvas.before:
+                Color:
+                    rgba: 0, 0, 0, 1
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            ToggleButton:
+                id: SLP_toggle_button_binance
+                text: "Binance"
+                on_press: root.selected_wallet_toggle_button("Binance", "SLP", SLP_txt_input, SLP_amount_value, root.SLP_current_value, SLP_wallet_value, self, SLP_toggle_button_ronin, SLP_toggle_button_all_wallets)
+
+            ToggleButton:
+                id: SLP_toggle_button_ronin
+                text: "Ronin"
+                on_press: root.selected_wallet_toggle_button("Ronin", "SLP", SLP_txt_input, SLP_amount_value, root.SLP_current_value, SLP_wallet_value, self, SLP_toggle_button_binance, SLP_toggle_button_all_wallets)
+                
+                
+            ToggleButton:
+                id: SLP_toggle_button_all_wallets
+                text: "All Wallets"
+                state: "down"
+                on_press: root.all_wallet__toggle_button("SLP", SLP_txt_input, SLP_amount_value, root.SLP_current_value, SLP_wallet_value, self, SLP_toggle_button_binance, SLP_toggle_button_ronin)
+
+
+        BoxLayout:
+            orientation: 'vertical'
+            canvas.before:
+                Color:
+                    rgba: 0, 0, 0, 1
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+
+            Label:
+                id: SLP_amount_value
+                text: str(root.tokens_records[root.selected_wallet]["SLP"])
+
+            TextInput:
+                id: SLP_txt_input
+                size_hint: 1, None
+                size: 0, "5dp"
+                background_color: (0,0,0,1)
+                disabled: True
+                font_size: "15dp"
+                multiline: False
+                on_text_validate: root.token_amount_validate(self, "SLP", root.alter_token_data, SLP_amount_value, root.SLP_current_value, SLP_wallet_value)
+
+        BoxLayout:
+            canvas.before:
+                Color:
+                    rgba: 0, 0, 0, 1
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            Label:
+                id: SLP_current_value
+                text: root.SLP_current_value
+
+        BoxLayout:
+            canvas.before:
+                Color:
+                    rgba: 0, 0, 0, 1
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            Label:
+                id: SLP_wallet_value
+                text: root.SLP_wallet_value_label
+
+    # FOURTH ROW -------------------------------------------------------
+    BoxLayout:
+        spacing: "5dp"
+
+        BoxLayout:
+            canvas.before:
+                Color:
+                    rgba: 0, 0, 0, 1
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            Label:
+                text: "AXS"
+        
+        BoxLayout:
+            orientation: "vertical"
+            canvas.before:
+                Color:
+                    rgba: 0, 0, 0, 1
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+
+            ToggleButton:
+                id: AXS_toggle_button_binance
+                text: "Binance"
+                on_press: root.selected_wallet_toggle_button("Binance", "AXS", AXS_txt_input, AXS_amount_value, root.AXS_current_value, AXS_wallet_value, self, AXS_toggle_button_ronin, AXS_toggle_button_all_wallets)
+
+            ToggleButton:
+                id: AXS_toggle_button_ronin
+                text: "Ronin"
+                on_press: root.selected_wallet_toggle_button("Ronin", "AXS", AXS_txt_input, AXS_amount_value, root.AXS_current_value, AXS_wallet_value, self, AXS_toggle_button_binance, AXS_toggle_button_all_wallets)
+                
+                
+            ToggleButton:
+                id: AXS_toggle_button_all_wallets
+                text: "All Wallets"
+                state: "down"
+                on_press: root.all_wallet__toggle_button("AXS", AXS_txt_input, AXS_amount_value, root.AXS_current_value, AXS_wallet_value, self, AXS_toggle_button_binance, AXS_toggle_button_ronin)
+
+
+        BoxLayout:
+            orientation: 'vertical'
+            canvas.before:
+                Color:
+                    rgba: 0, 0, 0, 1
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+
+            Label:
+                id: AXS_amount_value
+                text: str(root.tokens_records[root.selected_wallet]["AXS"])
+
+            TextInput:
+                id: AXS_txt_input
+                size_hint: 1, None
+                size: 0, "5dp"
+                background_color: (0,0,0,1)
+                disabled: True
+                font_size: "15dp"
+                multiline: False
+                on_text_validate: root.token_amount_validate(self, "AXS", root.alter_token_data, AXS_amount_value, root.AXS_current_value, AXS_wallet_value)
+
+        BoxLayout:
+            canvas.before:
+                Color:
+                    rgba: 0, 0, 0, 1
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            Label:
+                id: AXS_current_value
+                text: root.AXS_current_value
+
+        BoxLayout:
+            canvas.before:
+                Color:
+                    rgba: 0, 0, 0, 1
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            Label:
+                id: AXS_wallet_value
+                text: root.AXS_wallet_value_label
+
+        
+    # TOTAL ROW -------------------------------------------------------
+    BoxLayout:
+        BoxLayout:
+            size_hint: 3,1
+            canvas.before:
+                Color:
+                    rgba: 0, 0, 0, 1
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+
+            BoxLayout:
+                Label:
+                    text: "TOTAL"
+                    font_size: "20dp"
+            BoxLayout:
+                size_hint: 3,1
+
+        BoxLayout:
+            canvas.before:
+                Color:
+                    rgba: 0, 0, 0, 1
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            Label:
+                id: wallet_total_value
+                text: root.wallet_total_value_label
+                font_size: "25dp"
