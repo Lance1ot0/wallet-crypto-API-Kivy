@@ -14,8 +14,8 @@ Pour lancer le projet, il faut installer kivy, avoir python 3.6.5 ou antérieure
 ### Technologies utilisées
 - Python / Kivy
 
-## Fonctionnalités du logiceil
-Permet de sauvegarder ses différentes crypto monnaies avec une vue séparé pour les différents wallets et une vue cummulé de ses actifs.
+## Fonctionnalités du logiciel
+Permet de sauvegarder ses différentes crypto monnaies avec une vue séparée pour les différents portefeuilles et une vue cummulée de ses actifs.
 La valeur de chaque crypto monnaie est récupéré en consultant l'API de CoinMarketCap.
 
 ### Enregistrement
