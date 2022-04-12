@@ -5,7 +5,8 @@ Logiciel portefeuille crypto fait avec python kivy (non packager)
 <i>Aperçu du logiciel</i>
 
 ![Crypto-Wallet screen 1](https://user-images.githubusercontent.com/92601146/163048717-d132d037-8428-43ae-b59d-edaa15c2e256.png)
-![Crypto-Wallet screen 2](https://user-images.githubusercontent.com/92601146/163050044-a3f0faa5-87eb-4f16-9649-80a388ab32f9.png)
+![Crypto-Wallet screen 3](https://user-images.githubusercontent.com/92601146/163050626-88e33eb5-f4bf-4f52-a75d-c975fe24f14a.png)
+
 
 ### Installation du projet
 Pour lancer le projet, il faut installer kivy, avoir python 3.6.5 ou antérieure et lancer depuis son éditeur de code
