@@ -1,4 +1,4 @@
-# wallet-crypto-API-Python-Kivy-
+# wallet-crypto-API-Python-Kivy
 Logiciel portefeuille crypto fait avec python kivy (non packager)
 
 ## Le projet
