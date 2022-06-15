@@ -2,11 +2,11 @@ from requests import Request, Session
 import json
 import pprint # pprint.pprint to get json data ordered
 
-url = 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest'
+url = 'API_URL'
 
 headers = {
     'Accepts':'application/json',
-    'X-CMC_PRO_API_KEY':'1df34fcc-c5d1-4b7d-8650-9cd124daccb1'
+    'X-CMC_PRO_API_KEY':'API_KEY'
 }
 
 BTCparameters = {
